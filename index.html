@@ -1,13 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="main.css"> 
+    <link rel="stylesheet" type="text/css" href="main.css">
 </head>
+
 <body>
+    <div class="wrapper">
+        <nav class="nav">
+            <ul class="menu">
+                <li class="menu__item">Tasks</li>
+                <li class="menu__item">Done</li>
+                <li class="menu__item">Timer</li>
+            </ul>
+        </nav>
+        <main>
+            <header class="actual-date">
+                <h1>Monday</h1>
+                <h2>Dec 03, 2020</h2>
+            </header>
+            <form class="add-form" action="">
+                <input class="add-form__input" type="text" placeholder="Add a task...">
+                <ul class="tasks">
+                    <li class="tasks__item">pogłaskać kota</li>
+                    <li class="tasks__item">nakarmić kota</li>
+                </ul>
+            </form>
+        </main>
+    </div>
+
     <script src="main.js"></script>
 </body>
+
 </html>
