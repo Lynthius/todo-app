@@ -14,9 +14,9 @@
     <div class="wrapper wrapper-position">
         <nav class="nav">
             <ul class="menu">
-                <li class="menu__item--active">Tasks</li>
-                <li class="menu__item">Done</li>
-                <li class="menu__item">Timer</li>
+                <li class="menu__item--active"><a href="index.html">Tasks</a></li>
+                <li class="menu__item"><a href="">Calendar</a></li>
+                <li class="menu__item"><a href="timer.html">Timer</a></li>
             </ul>
         </nav>
         <main>
@@ -25,13 +25,15 @@
                 <h2 data-time="month">Dec 03, 2020</h2>
             </header>
             <form class="add-form" action="">
-                <input class="input add-form__input" type="text" placeholder="Add a task...">
+                <input class="input add-form__input" type="text" placeholder="Add a task..."
+                    title="type here your new task">
             </form>
             <ul class="tasks"></ul>
         </main>
+        <img class="archive archive-position" src="archive-icon.svg" alt="add to done section"
+            title="add to done section">
     </div>
 
     <script src="main.js"></script>
 </body>
-
 </html>

@@ -13,13 +13,12 @@ let year = today.getFullYear();
 h1.textContent = dayList[dayNumber];
 h2.textContent = `${monthList[monthNumber]}, ${year}`;
 
-
 // TO-DO-LIST
 const input = document.querySelector(".input");
 const form = document.querySelector(".add-form");
 const ul = document.querySelector(".tasks")
-const doneArray = [];
 let newTask;
+let i = 0;
 
 // ADD TASK
 const addTask = (e) => {
@@ -28,17 +27,19 @@ const addTask = (e) => {
     if (!newTask) return;
     const newLi = document.createElement("li");
     newLi.classList = "tasks__item";
-    ul.appendChild(newLi).innerHTML = '<input class="checkbox tasks__checkbox" type="checkbox" value="false">' + newTask;
+    ul.appendChild(newLi).innerHTML = `<input class="checkbox tasks__checkbox" type="checkbox" value="false" data-key=${i}> ${newTask}`;
+    i++;
     input.value = "";
-    console.log(newTask);
     newLi.addEventListener("change", checkTask);
 };
+form.addEventListener("submit", addTask);
 
-// CHECK AND UNCHECK TASK
+// ADD AND REMOVE AND CLEAR TASK
 const checkTask = (e) => {
     const clickedTask = e.target.parentNode;
+    console.log(clickedTask);
+    
     let checkBox = clickedTask.querySelector(".checkbox").checked;
-    console.log(checkBox);
     if (!checkBox) {
         clickedTask.style.textDecoration = "none";
         clickedTask.style.color = "black";
@@ -48,10 +49,11 @@ const checkTask = (e) => {
         clickedTask.style.color = "grey";
         checkBox = !checkBox;
     };
+
+    // CLEAR LIST
+    const archiveIcon = document.querySelector(".archive");
+    const archiveTask = () => {
+        clickedTask.remove();
+    };
+    archiveIcon.addEventListener("click", archiveTask);
 };
-
-// ARCHIVE - ADD TO DONE SECTION
-// doneArray.push(clickedTask.textContent);
-
-
-form.addEventListener("submit", addTask);

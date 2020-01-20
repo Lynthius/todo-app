@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="timer.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="wrapper wrapper-position">
+        <nav class="nav">
+            <ul class="menu">
+                <li class="menu__item"><a href="index.html">Tasks</a></li>
+                <li class="menu__item"><a href="">Calendar</a></li>
+                <li class="menu__item--active"><a href="">Timer</a></li>
+            </ul>
+        </nav>
+        <main>
+            <header class="timer">
+                <h1 data-time="day">Take your time</h1>
+            </header>
+            <div class="buttons">
+                <button class="main">START</button>
+                <button class="reset">RESET</button>
+            </div>
+            <div class="stoper">
+                <p>Start time</p>
+                <div class="time">---</div>
+            </div>
+        </main>
+    </div>
+
+    <script src="timer.js"></script>
+</body>
+
+</html>
