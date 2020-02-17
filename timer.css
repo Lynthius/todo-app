@@ -19,8 +19,19 @@ body {
     overflow: hidden;
 }
 
+main {
+    display: flex;
+    flex-direction: column;
+    /* position: relative; */
+}
+
 h1 {
     font-size: 2em;
+}
+
+h2 {
+    font-size: .8em;
+    color: #AAB5AD;
 }
 
 .wrapper-position {
@@ -33,9 +44,9 @@ h1 {
 
 .wrapper {
     /* border: 1px solid coral; */
-    background-color: white;
+    background-color: #F7F4F4;
     box-shadow: 0 0 .5em grey;
-    border-radius: 10px;
+    border-radius: 21px;
     animation-name: appear;
     animation-duration: 1s;
     /* padding: 0 4%; */
@@ -43,7 +54,10 @@ h1 {
 
 nav {
     width: 100%;
-    border-bottom: 1px solid silver;
+    border-bottom: 1px solid #FFFFFF;
+    background: #F6F4F4;
+    box-shadow: inset -4px -4px 12px rgba(199, 199, 199, 0.25);
+    border-radius: 21px 21px 0px 0px;
 }
 
 .menu {
@@ -55,10 +69,12 @@ nav {
 }
 
 .menu__item {
+    transform: translateY(1px);
     /* padding-bottom: 5px; */
 }
 
 .menu__item--active {
+    transform: translateY(1px);
     padding-bottom: 4%;
     border-bottom: 2px solid #74ebd5;
 }
@@ -71,24 +87,53 @@ nav {
     padding-right: 0;
 }
 
+.time {
+    font-size: 71px;
+    line-height: 40px;
+    /* or 56% */
+    text-align: center;
+    letter-spacing: 0.02em;
+}
+
 .buttons {
     text-align: center;
     margin-top: 60px;
 }
 
-button {
+.main {
     /* position: relative; */
     display: inline-block;
-    width: 100px;
-    height: 50px;
-    background-color: #74ebd5;;
-    border-style: none;
-    border-radius: 5px;
-    font-weight: bold;
+    outline: none;
+    color: #ffffff;
+    width: 160px;
+    height: 40px;
+    background: #74EBD5;
+    border: 1px solid #6FFFE4;
+    box-sizing: border-box;
+    box-shadow: -2px -2px 8px #FFFFFF, 2px 2px 15px rgba(116, 235, 213, 0.7);
+    border-radius: 25px;
 }
-button:hover {
-    background-color: #5dceb9;
-    border-style: none;
+
+.reset {
+    /* position: relative; */
+    display: inline-block;
+    outline: none;
+    color: #000000;
+    width: 160px;
+    height: 40px;
+    background: #F6F4F4;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-sizing: border-box;
+    box-shadow: -2px -2px 4px rgba(255, 255, 255, 0.7), 2px 2px 4px rgba(209, 205, 199, 0.8);
+    border-radius: 25px;
+}
+
+.reset:active {
+    color: #999999;
+    background: #F6F6F6;
+    border: 1px solid #F4F4F4;
+    box-shadow: 4px 4px 4px #FFFFFF, -4px -4px 4px rgba(209, 205, 199, 0.5);
+    border-radius: 25px;
 }
 
 .stoper {

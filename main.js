@@ -20,6 +20,13 @@ const ul = document.querySelector(".tasks")
 let newTask;
 let i = 0;
 
+// const newTab = (e) => {
+//     e.preventDefault()
+{
+    /* <label class="tasks__label"></label> */
+}
+// }
+
 // ADD TASK
 const addTask = (e) => {
     e.preventDefault();
@@ -27,7 +34,7 @@ const addTask = (e) => {
     if (!newTask) return;
     const newLi = document.createElement("li");
     newLi.classList = "tasks__item";
-    ul.appendChild(newLi).innerHTML = `<input class="checkbox tasks__checkbox" type="checkbox" value="false" data-key=${i}> ${newTask}`;
+    ul.appendChild(newLi).innerHTML = `<label class="tasks__label"><input class="checkbox tasks__checkbox" type="checkbox" value="false" data-key=${i}><span class="checkbox-custom"></span><span class="check-text">${newTask}</span></label>`;
     i++;
     input.value = "";
     newLi.addEventListener("change", checkTask);
@@ -38,22 +45,25 @@ form.addEventListener("submit", addTask);
 const checkTask = (e) => {
     const clickedTask = e.target.parentNode;
     console.log(clickedTask);
-    
+
     let checkBox = clickedTask.querySelector(".checkbox").checked;
+    console.log(checkBox);
+
     if (!checkBox) {
         clickedTask.style.textDecoration = "none";
         clickedTask.style.color = "black";
-        checkBox = !checkBox;
     } else {
         clickedTask.style.textDecoration = "line-through";
         clickedTask.style.color = "grey";
-        checkBox = !checkBox;
     };
 
     // CLEAR LIST
     const archiveIcon = document.querySelector(".archive");
     const archiveTask = () => {
-        clickedTask.remove();
+        console.log(checkBox);
+        if (clickedTask.style.color === "grey" && clickedTask.style.textDecoration === "line-through") {
+            clickedTask.remove();
+        };
     };
     archiveIcon.addEventListener("click", archiveTask);
 };
