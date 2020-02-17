@@ -41,6 +41,7 @@ h1 {
 
 h2 {
     font-size: .8em;
+    font-weight: lighter;
     color: #AAB5AD;
 }
 
@@ -84,6 +85,8 @@ nav {
 
 .menu__item--active {
     transform: translateY(1px);
+    font-weight: 600;
+    color: #000000;
     padding-bottom: 4%;
     border-bottom: 2px solid #74ebd5;
 }
