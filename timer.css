@@ -152,8 +152,11 @@ nav {
 }
 
 .buttons {
+    display: flex;
+    justify-content: space-evenly;
     text-align: center;
     margin-top: 20px;
+    padding: 0 60px;
 }
 
 .main {
@@ -161,7 +164,7 @@ nav {
     display: inline-block;
     outline: none;
     color: #ffffff;
-    width: 160px;
+    width: 140px;
     height: 40px;
     background: #74EBD5;
     border: 1px solid #6FFFE4;
@@ -183,7 +186,7 @@ nav {
     display: inline-block;
     outline: none;
     color: #000000;
-    width: 160px;
+    width: 140px;
     height: 40px;
     background: #F6F4F4;
     border: 1px solid rgba(255, 255, 255, 0.5);

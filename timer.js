@@ -37,7 +37,8 @@ let newRecord = "";
 let i = 1;
 const startTimer = () => {
     time++;
-    timerOutput.textContent = `${(time / 1000).toFixed(2)}`;
+    timerOutput.textContent = (time / 100).toFixed(2);
+
     newRecord = timerOutput.textContent;
 };
 

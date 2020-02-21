@@ -17,37 +17,55 @@ h2.textContent = `${monthList[monthNumber]}, ${year}`;
 const input = document.querySelector(".input");
 const form = document.querySelector(".add-form");
 const ul = document.querySelector(".tasks")
-let newTask;
-let i = 0;
 
-// const newTab = (e) => {
-//     e.preventDefault()
-{
-    /* <label class="tasks__label"></label> */
-}
-// }
+let items = JSON.parse(localStorage.getItem("items")) || [];
 
 // ADD TASK
-const addTask = (e) => {
+function addTask(e) {
     e.preventDefault();
-    newTask = input.value;
-    if (!newTask) return;
-    const newLi = document.createElement("li");
-    newLi.classList = "tasks__item";
-    ul.appendChild(newLi).innerHTML = `<label class="tasks__label"><input class="checkbox tasks__checkbox" type="checkbox" value="false" data-key=${i}><span class="checkbox-custom"></span><span class="check-text">${newTask}</span></label>`;
-    i++;
-    input.value = "";
-    newLi.addEventListener("change", checkTask);
+    var id = generateID();
+    var id = id ? id : generateID();
+    const text = (this.querySelector('[name=item]')).value;
+    const item = {
+        text,
+        id: id
+    };
+
+    if (text) {
+        items.push(item);
+        updateTasks(items, ul);
+        this.reset();
+        localStorage.setItem("items", JSON.stringify(items));
+    };
 };
+
+function updateTasks(tasks = [], tasksList) {
+    tasksList.innerHTML = tasks.map((task, i) => {
+        var id = id ? id : generateID();
+        return `<li>
+        <label class="tasks__label"><input class="checkbox tasks__checkbox" type="checkbox" value="false" data-index = ${i} data-id=${id}>
+        <span class="checkbox-custom"></span><span class="check-text">${task.text}</span></label>
+        <li>`
+    }).join('');
+};
+
 form.addEventListener("submit", addTask);
+
+function generateID() {
+    var randLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+    return randLetter + Date.now();
+};
 
 // ADD AND REMOVE AND CLEAR TASK
 const checkTask = (e) => {
     const clickedTask = e.target.parentNode;
-    console.log(clickedTask);
+
+    const index = e.target.dataset.index;
+    const idTask = e.target.dataset.id;
+
+    items[index].id = idTask;
 
     let checkBox = clickedTask.querySelector(".checkbox").checked;
-    console.log(checkBox);
 
     if (!checkBox) {
         clickedTask.style.textDecoration = "none";
@@ -60,10 +78,26 @@ const checkTask = (e) => {
     // CLEAR LIST
     const archiveIcon = document.querySelector(".archive");
     const archiveTask = () => {
-        console.log(checkBox);
-        if (clickedTask.style.color === "grey" && clickedTask.style.textDecoration === "line-through") {
-            clickedTask.remove();
+        JSON.parse(localStorage.getItem("items"));
+        if (!(clickedTask.style.textDecoration === "line-through")) return
+        var removeIndex = items.map(function (item) {
+            return item.id;
+        }).indexOf(idTask);
+
+        for (var i = 0; i < items.length; i++) {
+            var obj = items[i];
+
+            if (idTask.indexOf(obj.id) !== -1) {
+                items.splice(removeIndex, 1);
+            };
+            localStorage.setItem("items", JSON.stringify(items));
+            updateTasks(items, ul);
         };
     };
     archiveIcon.addEventListener("click", archiveTask);
+    console.log(items);
 };
+
+ul.addEventListener("change", checkTask);
+
+updateTasks(items, ul);
