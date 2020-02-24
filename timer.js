@@ -17,10 +17,13 @@ const resetBtn = document.querySelector('.reset');
 const timerOutput = document.querySelector('.time');
 const ul = document.querySelector(".times");
 
-let time = 0;
+let time = JSON.parse(localStorage.getItem("time")) || 0;
+let records = JSON.parse(localStorage.getItem("records")) || [];
+let i = (JSON.parse(localStorage.getItem("i")) + 1) || 1;
 let active = false;
 let intervalId;
 
+// window.onload = function() {
 const initTimer = () => {
     if (!active) {
         active = !active;
@@ -30,16 +33,16 @@ const initTimer = () => {
         active = !active;
         initBtn.textContent = 'START';
         clearInterval(intervalId);
-    }
+    };
 };
 
 let newRecord = "";
-let i = 1;
-const startTimer = () => {
-    time++;
-    timerOutput.textContent = (time / 100).toFixed(2);
 
+const startTimer = () => {
+    timerOutput.textContent = (time / 100).toFixed(2);
     newRecord = timerOutput.textContent;
+    localStorage.setItem("time", JSON.stringify(time));
+    time++;
 };
 
 const resetTimer = () => {
@@ -48,15 +51,29 @@ const resetTimer = () => {
     initBtn.textContent = 'START';
     timerOutput.textContent = '---';
     clearInterval(intervalId);
+    localStorage.removeItem("time")
+    localStorage.setItem("i", JSON.stringify(i));
 
     if (!newRecord) return;
 
     const newLi = document.createElement("li");
     newLi.classList = "record__item";
-    ul.insertBefore(newLi, ul.firstChild).innerHTML = `<span class="check-text"> Measurement ${i} is equal to <strong>${newRecord}</strong>`;
+    record = (ul.insertBefore(newLi, ul.firstChild).innerHTML = `<span class="check-text"> Measurement ${i} is equal to <strong>${newRecord}</strong>`);
+    records.push(record);
     newRecord = "";
     i++;
+    updateRecords(records, ul)
+};
+
+function updateRecords(records = [], ul) {
+    ul.innerHTML = records.map((record) => {
+        return record;
+    }).join('');
+    localStorage.setItem("records", JSON.stringify(records));
 };
 
 initBtn.addEventListener('click', initTimer);
 resetBtn.addEventListener('click', resetTimer);
+
+startTimer();
+updateRecords(records, ul);

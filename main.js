@@ -20,12 +20,11 @@ const ul = document.querySelector(".tasks")
 
 let items = JSON.parse(localStorage.getItem("items")) || [];
 
-// ADD TASK
 function addTask(e) {
     e.preventDefault();
     var id = generateID();
     var id = id ? id : generateID();
-    const text = (this.querySelector('[name=item]')).value;
+    const text = (this.querySelector('input')).value;
     const item = {
         text,
         id: id
@@ -43,8 +42,10 @@ function updateTasks(tasks = [], tasksList) {
     tasksList.innerHTML = tasks.map((task, i) => {
         var id = id ? id : generateID();
         return `<li>
-        <label class="tasks__label"><input class="checkbox tasks__checkbox" type="checkbox" value="false" data-index = ${i} data-id=${id}>
-        <span class="checkbox-custom"></span><span class="check-text">${task.text}</span></label>
+        <label class="tasks__label">
+        <input class="checkbox tasks__checkbox" type="checkbox" value="false" data-index = ${i} data-id=${id}>
+        <span class="checkbox-custom"></span><span class="check-text">${task.text}</span>
+        </label>
         <li>`
     }).join('');
 };
@@ -57,9 +58,8 @@ function generateID() {
 };
 
 // ADD AND REMOVE AND CLEAR TASK
-const checkTask = (e) => {
+function checkTask(e) {
     const clickedTask = e.target.parentNode;
-
     const index = e.target.dataset.index;
     const idTask = e.target.dataset.id;
 
@@ -75,11 +75,10 @@ const checkTask = (e) => {
         clickedTask.style.color = "grey";
     };
 
-    // CLEAR LIST
     const archiveIcon = document.querySelector(".archive");
-    const archiveTask = () => {
-        JSON.parse(localStorage.getItem("items"));
-        if (!(clickedTask.style.textDecoration === "line-through")) return
+
+    function archiveTask() {
+        if (!(clickedTask.style.textDecoration === "line-through")) return;
         var removeIndex = items.map(function (item) {
             return item.id;
         }).indexOf(idTask);
