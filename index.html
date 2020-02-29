@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Todo list</title>
     <link rel="stylesheet" type="text/css" href="main.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700&display=swap" rel="stylesheet">
 </head>
@@ -15,12 +15,12 @@
         <nav class="nav">
             <ul class="menu">
                 <li class="menu__item--active"><a href="index.html">Tasks</a></li>
-                <li class="menu__item"><a href="">Calendar</a></li>
+                <li class="menu__item"><a href="calendar.html">Calendar</a></li>
                 <li class="menu__item"><a href="timer.html">Timer</a></li>
             </ul>
         </nav>
         <main>
-            <header class="actual-date">
+            <header class="current-date">
                 <h1 data-time="day">Monday</h1>
                 <h2 data-time="month">Dec 03, 2020</h2>
             </header>
@@ -29,7 +29,7 @@
                     title="type here your new task">
             </form>
             <ul class="tasks"></ul>
-            <div class="archive archive-position">
+            <div class="archive">
                 <button class="circle-button">
                     <img class="archive-img" src="archive-icon.svg" alt="archive tasks" title="archive tasks">
                 </button>

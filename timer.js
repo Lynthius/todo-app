@@ -12,23 +12,23 @@ let year = today.getFullYear();
 
 h2.textContent = `${dayList[dayNumber]}, ${monthList[monthNumber]}, ${year}`;
 
-const initBtn = document.querySelector('.main');
-const resetBtn = document.querySelector('.reset');
+const initBtn = document.querySelector('.buttons--main');
+const resetBtn = document.querySelector('.buttons--reset');
 const timerOutput = document.querySelector('.time');
 const ul = document.querySelector(".times");
+const archiveIcon = document.querySelector(".archive");
 
-let time = JSON.parse(localStorage.getItem("time")) || 0;
+let now = JSON.parse(localStorage.getItem("time")) || 0;
 let records = JSON.parse(localStorage.getItem("records")) || [];
 let i = (JSON.parse(localStorage.getItem("i")) + 1) || 1;
 let active = false;
 let intervalId;
 
-// window.onload = function() {
 const initTimer = () => {
     if (!active) {
         active = !active;
         initBtn.textContent = 'PAUSE';
-        intervalId = setInterval(startTimer, 10);
+        intervalId = setInterval(startTimer, 1000);
     } else {
         active = !active;
         initBtn.textContent = 'START';
@@ -39,17 +39,28 @@ const initTimer = () => {
 let newRecord = "";
 
 const startTimer = () => {
-    timerOutput.textContent = (time / 100).toFixed(2);
+    var time = now;
+    var hours = Math.floor(time / 3600);
+    time -= hours * 3600;
+    var mins = Math.floor(time / 60);
+    time -= mins * 60;
+    var secs = time;
+    
+    // Update the display timer
+    if (hours<10) { hours = + hours; }
+    if (mins<10) { mins = "0" + mins; }
+    if (secs<10) { secs = "0" + secs; }
+    timerOutput.innerHTML = hours + "." + mins + "." + secs;
+    
     newRecord = timerOutput.textContent;
-    localStorage.setItem("time", JSON.stringify(time));
-    time++;
+    localStorage.setItem("time", JSON.stringify(now));
+    now++;
 };
-
 const resetTimer = () => {
-    time = 0;
+    now = 0;
     active = false;
     initBtn.textContent = 'START';
-    timerOutput.textContent = '---';
+    timerOutput.textContent = '0.00.00';
     clearInterval(intervalId);
     localStorage.removeItem("time")
     localStorage.setItem("i", JSON.stringify(i));
@@ -62,10 +73,11 @@ const resetTimer = () => {
     records.push(record);
     newRecord = "";
     i++;
-    updateRecords(records, ul)
+    updateRecords(records, ul);
 };
 
 function updateRecords(records = [], ul) {
+    
     ul.innerHTML = records.map((record) => {
         return record;
     }).join('');
@@ -74,6 +86,16 @@ function updateRecords(records = [], ul) {
 
 initBtn.addEventListener('click', initTimer);
 resetBtn.addEventListener('click', resetTimer);
+
+function archiveRecords () {
+    records = [];
+    i = 1;
+    localStorage.removeItem("records");
+    localStorage.removeItem("i");
+    updateRecords(records, ul);
+};
+
+archiveIcon.addEventListener("click", archiveRecords);
 
 startTimer();
 updateRecords(records, ul);
