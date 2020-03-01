@@ -24,10 +24,17 @@ function addTask(e) {
     e.preventDefault();
     var id = generateID();
     var id = id ? id : generateID();
-    const text = (this.querySelector('input')).value;
+    var color = "black";
+    var decoration = "none";
+    var check = "";
+    const text = (this.querySelector("input")).value;
+
     const item = {
         text,
-        id: id
+        id: id,
+        color: color,
+        decoration: decoration,
+        check: check
     };
 
     if (text) {
@@ -42,8 +49,8 @@ function updateTasks(tasks = [], tasksList) {
     tasksList.innerHTML = tasks.map((task, i) => {
         var id = id ? id : generateID();
         return `<li>
-        <label class="tasks__label">
-        <input class="checkbox tasks__checkbox" type="checkbox" value="false" data-index = ${i} data-id=${id}>
+        <label class="tasks__label" style="text-decoration: ${task.decoration}; color: ${task.color}">
+        <input class="checkbox tasks__checkbox" type="checkbox" ${task.check} data-index = ${i} data-id=${id}>
         <span class="checkbox-custom"></span><span class="check-text">${task.text}</span>
         </label>
         <li>`
@@ -62,41 +69,44 @@ function checkTask(e) {
     const clickedTask = e.target.parentNode;
     const index = e.target.dataset.index;
     const idTask = e.target.dataset.id;
+    const checkBox = clickedTask.querySelector(".checkbox").checked;
 
     items[index].id = idTask;
-
-    let checkBox = clickedTask.querySelector(".checkbox").checked;
 
     if (!checkBox) {
         clickedTask.style.textDecoration = "none";
         clickedTask.style.color = "black";
+        color = "black";
+        items[index].color = "black";
+        items[index].decoration = "none";
+        items[index].check = "";
     } else {
         clickedTask.style.textDecoration = "line-through";
         clickedTask.style.color = "grey";
+        color = "grey";
+        items[index].color = "grey";
+        items[index].decoration = "line-through";
+        items[index].check = "checked";
     };
 
-    const archiveIcon = document.querySelector(".archive");
-
-    function archiveTask() {
-        if (!(clickedTask.style.textDecoration === "line-through")) return;
-        var removeIndex = items.map(function (item) {
-            return item.id;
-        }).indexOf(idTask);
-
-        for (var i = 0; i < items.length; i++) {
-            var obj = items[i];
-
-            if (idTask.indexOf(obj.id) !== -1) {
-                items.splice(removeIndex, 1);
-            };
-            localStorage.setItem("items", JSON.stringify(items));
-            updateTasks(items, ul);
-        };
-    };
-    archiveIcon.addEventListener("click", archiveTask);
-    console.log(items);
+    localStorage.setItem("items", JSON.stringify(items));
+    updateTasks(items, ul);
 };
 
+const archiveIcon = document.querySelector(".archive");
+
+function archiveTask() {
+    for (var i = 0; i < items.length; i++) {
+        let obj = items[i];
+        if ((obj.check) === "checked") {
+            items.splice(i, 1);
+        };
+    };
+    localStorage.setItem("items", JSON.stringify(items));
+    updateTasks(items, ul);
+};
+
+archiveIcon.addEventListener("click", archiveTask);
 ul.addEventListener("change", checkTask);
 
 updateTasks(items, ul);
