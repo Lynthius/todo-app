@@ -68,7 +68,7 @@ h2 {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  width: 100vw;
+  height: 550px;
   background-color: #F7F4F4;
   box-shadow: 0 0 .5em grey;
   animation-name: appear;
@@ -133,8 +133,8 @@ main {
   list-style: none;
   line-height: 1.9em;
   padding-top: 2%;
-  padding-left: 90px;
-  padding-right: 90px;
+  padding-left: 60px;
+  padding-right: 60px;
   overflow: auto;
 }
 

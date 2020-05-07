@@ -143,6 +143,11 @@ main {
   box-shadow: 4px 4px 12px #FFFFFF, -4px -4px 12px rgba(209, 205, 199, 0.8);
 }
 
+.checked {
+  text-decoration: line-through;
+  color: grey;
+}
+
 .tasks__label input {
   opacity: 0;
   position: absolute;
@@ -205,6 +210,10 @@ main {
 }
 
 .tasks input {
+  cursor: pointer;
+}
+
+.check-text {
   cursor: pointer;
 }
 
