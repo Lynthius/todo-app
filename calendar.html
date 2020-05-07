@@ -2,39 +2,41 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendar</title>
-    <link rel="stylesheet" type="text/css" href="calendar.css">
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendar</title>
+  <link rel="stylesheet" type="text/css" href="/css/calendar.css">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div class="wrapper wrapper-position">
-        <nav class="nav">
-            <ul class="menu">
-                <li class="menu__item"><a href="index.html">Tasks</a></li>
-                <li class="menu__item--active"><a href="calendar.html">Calendar</a></li>
-                <li class="menu__item"><a href="timer.html">Timer</a></li>
-            </ul>
-        </nav>
-        <main>
-            <header class="current-date">
-                <h1 data-time="day">Calendar</h1>
-                <h2 data-time="month">Dec 03, 2020</h2>
-            </header>
-            <div class="calendar-wrapper">
-                <div class="calendar-container">
-                    <div class="calendar">
-                        <span class="calendar__current-date"></span>
-                    </div>
-                    <div id="calendar__dates"></div>
-                </div>
+  <div class="container">
+    <div class="wrapper">
+      <nav class="nav">
+        <ul class="menu">
+          <li class="menu__item"><a href="index.html">Tasks</a></li>
+          <li class="menu__item--active"><a href="calendar.html">Calendar</a></li>
+          <li class="menu__item"><a href="timer.html">Timer</a></li>
+        </ul>
+      </nav>
+      <main>
+        <header class="current-date">
+          <h1 data-time="day">Calendar</h1>
+          <h2 data-time="month">Dec 03, 2020</h2>
+        </header>
+        <div class="calendar-wrapper">
+          <div class="calendar-container">
+            <div class="calendar">
+              <span class="calendar__current-date"></span>
             </div>
-        </main>
+            <div id="calendar__dates"></div>
+          </div>
+        </div>
+      </main>
     </div>
+  </div>
 
-    <script src="calendar.js"></script>
+  <script src="/js/calendar.js"></script>
 </body>
 
 </html>
