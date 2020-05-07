@@ -9,8 +9,9 @@ let today = new Date();
 let dayNumber = today.getDay();
 let monthNumber = today.getMonth();
 let year = today.getFullYear();
+let day = today.getDate();
 
-h2.textContent = `${dayList[dayNumber]}, ${monthList[monthNumber]}, ${year}`;
+h2.textContent = `${dayList[dayNumber]}, ${day} ${monthList[monthNumber]}, ${year}`;
 
 const initBtn = document.querySelector('.buttons--main');
 const resetBtn = document.querySelector('.buttons--reset');

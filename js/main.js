@@ -9,9 +9,10 @@ let today = new Date();
 let dayNumber = today.getDay();
 let monthNumber = today.getMonth();
 let year = today.getFullYear();
+let day = today.getDate();
 
 h1.textContent = dayList[dayNumber];
-h2.textContent = `${monthList[monthNumber]}, ${year}`;
+h2.textContent = `${day} ${monthList[monthNumber]}, ${year}`;
 
 // TO-DO-LIST
 const input = document.querySelector(".input");
