@@ -11,34 +11,34 @@
 </head>
 
 <body>
-  <div class="container">
-    <div class="wrapper">
+  <div class="wraper-container">
+    <div class="container">
       <nav class="nav">
-        <ul class="menu">
-          <li class="menu__item"><a href="index.html">Tasks</a></li>
-          <li class="menu__item"><a href="calendar.html">Calendar</a></li>
-          <li class="menu__item--active"><a href="timer.html">Timer</a></li>
+        <ul class="nav__menu">
+          <li class="nav__item"><a href="index.html">Tasks</a></li>
+          <li class="nav__item"><a href="calendar.html">Calendar</a></li>
+          <li class="nav__item--active"><a href="timer.html">Timer</a></li>
         </ul>
       </nav>
       <main>
-        <header class="timer">
+        <header class="current-date">
           <h1 data-time="day">Timer</h1>
           <h2 data-time="month">Dec 03, 2020</h2>
         </header>
         <div class="stoper">
-          <div class="time">00.00.00</div>
+          <div class="stoper__time">00.00.00</div>
         </div>
         <container>
           <div class="records">
-            <ul class="times"></ul>
+            <ul class="records__list"></ul>
           </div>
         </container>
-        <div class="buttons buttons-position">
-          <button class="buttons--main">START</button>
-          <button class="buttons--reset">RESET</button>
+        <div class="buttons">
+          <button class="buttons__main">START</button>
+          <button class="buttons__reset">RESET</button>
         </div>
         <div class="archive">
-          <button class="circle-button">
+          <button class="archive__circle-button">
             <img class="archive-img" src="/assets/archive-icon.svg" alt="archive measurements"
               title="archive measurements">
           </button>
