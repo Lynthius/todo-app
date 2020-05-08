@@ -13,10 +13,10 @@ let day = today.getDate();
 
 h2.textContent = `${dayList[dayNumber]}, ${day} ${monthList[monthNumber]}, ${year}`;
 
-const initBtn = document.querySelector('.buttons--main');
-const resetBtn = document.querySelector('.buttons--reset');
-const timerOutput = document.querySelector('.time');
-const ul = document.querySelector(".times");
+const initBtn = document.querySelector('.buttons__main');
+const resetBtn = document.querySelector('.buttons__reset');
+const timerOutput = document.querySelector('.stoper__time');
+const ul = document.querySelector(".records__list");
 const archiveIcon = document.querySelector(".archive");
 
 let now = JSON.parse(localStorage.getItem("time")) || 0;
@@ -46,18 +46,26 @@ const startTimer = () => {
     var mins = Math.floor(time / 60);
     time -= mins * 60;
     var secs = time;
-    
+
     // Update the display timer
-    if (hours<10) { hours = + hours; }
-    if (mins<10) { mins = "0" + mins; }
-    if (secs<10) { secs = "0" + secs; }
+    if (hours < 10) {
+        hours = +hours;
+    }
+    if (mins < 10) {
+        mins = "0" + mins;
+    }
+    if (secs < 10) {
+        secs = "0" + secs;
+    }
     timerOutput.innerHTML = hours + "." + mins + "." + secs;
-    
+
     newRecord = timerOutput.textContent;
     localStorage.setItem("time", JSON.stringify(now));
     now++;
 };
-const resetTimer = () => {
+
+function resetTimer(e) {
+
     now = 0;
     active = false;
     initBtn.textContent = 'START';
@@ -67,19 +75,18 @@ const resetTimer = () => {
     localStorage.setItem("i", JSON.stringify(i));
 
     if (!newRecord) return;
-
-    const newLi = document.createElement("li");
-    newLi.classList = "record__item";
-    record = (ul.insertBefore(newLi, ul.firstChild).innerHTML = `<span class="check-text"> Measurement ${i} is equal to <strong>${newRecord}</strong>`);
-    records.push(record);
+    record = document.createElement('div');
+    record.innerHTML = `<li> Measurement ${i} is equal to <strong>${newRecord}</strong></li>`;
+    ul.appendChild(record);
     newRecord = "";
     i++;
+    records.push(record.innerHTML);
     updateRecords(records, ul);
 };
 
 function updateRecords(records = [], ul) {
-    
     ul.innerHTML = records.map((record) => {
+        console.log(record);
         return record;
     }).join('');
     localStorage.setItem("records", JSON.stringify(records));
@@ -88,7 +95,7 @@ function updateRecords(records = [], ul) {
 initBtn.addEventListener('click', initTimer);
 resetBtn.addEventListener('click', resetTimer);
 
-function archiveRecords () {
+function archiveRecords() {
     records = [];
     i = 1;
     localStorage.removeItem("records");

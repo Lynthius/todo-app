@@ -245,10 +245,10 @@ main {
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 50%;
     box-shadow: -4px -4px 4px rgba(255, 255, 255, 0.5), 4px 4px 12px rgba(209, 205, 199, 0.5);
-  }
 
-  &__circle-button:active {
-    box-shadow: 4px 4px 12px #FFFFFF, -4px -4px 12px rgba(209, 205, 199, 0.5);
+    &:active {
+      box-shadow: 4px 4px 12px #FFFFFF, -4px -4px 12px rgba(209, 205, 199, 0.5);
+    }
   }
 }
 

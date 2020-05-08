@@ -27,8 +27,8 @@ window.onload = function () {
     const daysTotal = new this.Date(year, month + 1, 0).getDate();
     const calendar = this.getCalendar(dayNumber, daysTotal);
 
-    document.querySelector(".calendar__current-date").innerHTML = `${monthList[month]} ${year}`;
-    document.getElementById("calendar__dates").appendChild(calendar);
+    document.querySelector(".calendar__current-month").innerHTML = `${monthList[month]} ${year}`;
+    document.querySelector(".calendar__dates").appendChild(calendar);
 };
 
 function getCalendar(dayNumber, daysTotal) {
@@ -71,7 +71,7 @@ function getCalendar(dayNumber, daysTotal) {
         tr = document.createElement("tr");
         for (var c = 0; c <= 6; c++) {
             if (td.textContent == dayCurrent) {
-                td.classList.add("current-day");
+                td.classList.add("calendar__dates--highlight-day");
                 console.log(dayCurrent);
             };
             if (count > daysTotal) {
