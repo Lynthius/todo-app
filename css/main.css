@@ -4,6 +4,12 @@
   box-sizing: border-box;
   font-family: 'Ubuntu', sans-serif; }
 
+@keyframes appear {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 100%; } }
+
 body {
   background: #74ebd5;
   /* fallback for old browsers */
@@ -34,12 +40,6 @@ a {
 @media only screen and (min-width: 450px) {
   a {
     font-size: 1em; } }
-
-@keyframes appear {
-  0% {
-    opacity: 0; }
-  100% {
-    opacity: 100%; } }
 
 h1 {
   font-size: 1.7em; }

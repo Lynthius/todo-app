@@ -10,13 +10,13 @@
 </head>
 
 <body>
-  <div class="container">
-    <div class="wrapper">
+  <div class="wraper-container">
+    <div class="container">
       <nav class="nav">
-        <ul class="menu">
-          <li class="menu__item"><a href="index.html">Tasks</a></li>
-          <li class="menu__item--active"><a href="calendar.html">Calendar</a></li>
-          <li class="menu__item"><a href="timer.html">Timer</a></li>
+        <ul class="nav__menu">
+          <li class="nav__item"><a href="index.html">Tasks</a></li>
+          <li class="nav__item--active"><a href="calendar.html">Calendar</a></li>
+          <li class="nav__item"><a href="timer.html">Timer</a></li>
         </ul>
       </nav>
       <main>
@@ -24,13 +24,9 @@
           <h1 data-time="day">Calendar</h1>
           <h2 data-time="month">Dec 03, 2020</h2>
         </header>
-        <div class="calendar-wrapper">
-          <div class="calendar-container">
-            <div class="calendar">
-              <span class="calendar__current-date"></span>
-            </div>
-            <div id="calendar__dates"></div>
-          </div>
+        <div class="calendar">
+          <span class="calendar__current-month"></span>
+          <div class="calendar__dates"></div>
         </div>
       </main>
     </div>
