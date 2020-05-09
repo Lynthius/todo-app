@@ -25,7 +25,7 @@ body {
   height: 100%;
 }
 
-@media (orientation: landscape) {
+@media (orientation: landscape) and (max-width: 680px) {
   body {
     overflow: visible;
     padding: 150px 0;
