@@ -1,4 +1,4 @@
-// ACTUAL DATE
+// Current date
 const h1 = document.querySelector(`h1[data-time="day"]`);
 const h2 = document.querySelector(`h2[data-time="month"]`);
 
@@ -14,7 +14,7 @@ function renderDate() {
 }
 renderDate();
 
-// TO-DO-LIST
+// Todo list
 const input = document.querySelector(".input");
 const form = document.querySelector(".add-form");
 const ul = document.querySelector(".tasks");
