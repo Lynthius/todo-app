@@ -25,6 +25,13 @@ body {
   height: 100%;
 }
 
+@media (orientation: landscape) {
+  body {
+    overflow: visible;
+    padding: 150px 0;
+  }
+}
+
 a {
   text-decoration: none;
   color: #000000;

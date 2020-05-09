@@ -19,6 +19,11 @@ body {
   overflow: hidden;
   height: 100%; }
 
+@media (orientation: landscape) {
+  body {
+    overflow: visible;
+    padding: 150px 0; } }
+
 ::-webkit-scrollbar {
   width: 5px; }
 
