@@ -38,7 +38,7 @@ function getCalendar(dayNumber, daysTotal) {
   let tr = document.createElement("tr");
   var td = document.createElement("td");
 
-  // create row for the day letters
+  // Create row for the day letters
   for (var c = 0; c <= 6; c++) {
     var td = document.createElement("td");
     td.innerHTML = "SMTWTFS" [c];
@@ -46,7 +46,7 @@ function getCalendar(dayNumber, daysTotal) {
   };
   table.appendChild(tr);
 
-  // create 2nd row for number of days
+  // Create 2nd row for number of days
   tr = document.createElement("tr");
   var c;
   for (var c = 0; c <= 6; c++) {
@@ -67,7 +67,7 @@ function getCalendar(dayNumber, daysTotal) {
   }
   table.appendChild(tr);
 
-  // create rest of the rows
+  // Create rest of the rows
   for (var r = 3; r <= 7; r++) {
     tr = document.createElement("tr");
     for (var c = 0; c <= 6; c++) {
