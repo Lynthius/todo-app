@@ -12,7 +12,7 @@ This project is a todo list website with simple features, like calendar and time
 ### Technologies
 Project is created with:
 * HTML5
-* CSS
+* SCSS
 * JavaScript ES2019
 	
 ### Setup
