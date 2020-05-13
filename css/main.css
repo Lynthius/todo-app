@@ -153,6 +153,7 @@ main {
     border-radius: 2px; }
   .tasks__label .checkbox-custom::after {
     content: "✓";
+    margin-left: 30px;
     opacity: 0; }
   .tasks__label input:checked ~ .checkbox-custom {
     display: inline-block;
@@ -170,10 +171,13 @@ main {
     top: -6px;
     left: 2px;
     opacity: 1; }
+  .tasks li {
+    text-indent: -30px;
+    padding-left: 2em; }
 
 @media only screen and (min-width: 450px) {
   .tasks {
-    padding: 5px 70px 0 70px; }
+    padding: 5px 60px 0 65px; }
     .tasks input {
       cursor: pointer; } }
 

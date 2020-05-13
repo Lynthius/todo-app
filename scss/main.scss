@@ -194,6 +194,7 @@ main {
 
   &__label .checkbox-custom::after {
     content: "✓";
+    margin-left: 30px;
     opacity: 0;
   }
 
@@ -216,11 +217,16 @@ main {
     left: 2px;
     opacity: 1;
   }
+
+  & li {
+    text-indent: -30px;
+    padding-left: 2em;
+  }
 }
 
 @media only screen and (min-width: 450px) {
   .tasks {
-    padding: 5px 70px 0 70px;
+    padding: 5px 60px 0 65px;
 
     & input {
       cursor: pointer;
