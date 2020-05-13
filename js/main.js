@@ -38,7 +38,7 @@ function addTask(e) {
   };
 
   if (text) {
-    items.push(item);
+    items.unshift(item);
     this.reset();
     updateLocalStorage()
   };
